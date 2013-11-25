@@ -12,7 +12,7 @@
 	}
 
 	$foursquare = new FoursquareAPI($client_key,$client_secret);
-	$location = array_key_exists("location",$_GET) ? $_GET['location'] : "Montreal, QC";
+	$location = array_key_exists("location",$_GET) ? $_GET['location'] : "CAMPINAS,SP";
 ?>
 <!doctype html>
 <html>
