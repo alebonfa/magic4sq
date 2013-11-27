@@ -96,6 +96,21 @@ class FoursquareApi {
 	}
 	
 	/** 
+	 * GetVenue
+	 * Performs a request for a public resource
+	 * @param String $endpoint A particular endpoint of the Foursquare API
+	 * @param Array $params A set of parameters to be appended to the request, defaults to false (none)
+	 */
+
+	public function GetVenue($endpoint){
+		$url = $this->BaseUrl . trim($endpoint,"/");
+		$params['client_id'] = $this->ClientID;
+		$params['client_secret'] = $this->ClientSecret;
+		$params['v'] = $this->Version;
+		return $this->GET($url,$params);
+	}
+	
+	/** 
 	 * GetPrivate
 	 * Performs a request for a private resource
 	 * @param String $endpoint A particular endpoint of the Foursquare API

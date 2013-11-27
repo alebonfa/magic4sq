@@ -1,0 +1,30 @@
+div.venue
+{   
+	float: left;
+	padding: 10px;
+	background: #efefef;
+	height: 90px;
+	margin: 10px;
+	width: 340px;
+}
+div.venue a
+{
+	color:#000;
+	text-decoration: none;
+
+}
+div.venue .icon
+{
+	background: #000;
+	width: 88px;
+	height: 88px;
+	float: left;
+	margin: 0px 10px 0px 0px;
+}
+div.city
+{
+	background: #ababff;
+	color: #1313ff;
+	clear: both;
+	margin-top: 20px;
+}
