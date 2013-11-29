@@ -1,14 +1,17 @@
 <?php
     function distancia($p1LA, $p1LO, $p2LA, $p2LO) {
-        $r = 6371.0;
-        $p1LA = $p1LA * pi() / 180.0;
-        $p1LO = $p1LO * pi() / 180.0;
-        $p2LA = $p1LA * pi() / 180.0;
-        $p2LO = $p1LO * pi() / 180.0;
-        $dLat = $p2LA - $p1LA;
-        $dLong = $p2LO - $p2LO;
-        $a = sin($dLat / 2) * sin($dLat / 2) + cos($p1LA) * cos($p2LA) * sin($dLong / 2) * sin($dLong / 2);
-        $c = 2 * atan2(sqrt($a), sqrt( 1 - $a));
-        return round($r * $c * 1000);
+        $earthRadius = 6372.795477598;
+        $latFrom = deg2rad($p1LA);
+        $lonFrom = deg2rad($p1LO);
+        $latTo = deg2rad($p2LA);
+        $lonTo = deg2rad($p2LO);
+  
+        $lonDelta = $lonTo - $lonFrom;
+          $a = pow(cos($latTo) * sin($lonDelta), 2) +
+            pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+          $b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+
+          $angle = atan2(sqrt($a), $b);
+          return $angle * $earthRadius * 1000;
     }
 ?>
