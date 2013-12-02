@@ -3,12 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+
 </head>
 <body>
 
-	<p id="demo">Click the button to get your coordinates:</p>
+	<p id="demo"></p>
 
-	<button onclick="getLocation()">Try It</button>
+	<button onclick="getLocation()">Refresh</button>
+
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
 	<script>
 		var x = document.getElementById("demo");
@@ -24,19 +31,29 @@
 		function showPosition(position) {
 			var la = position.coords.latitude;
 			var lo = position.coords.longitude;
-			x.innerHTML = 'De: <br>' ;
-			x.innerHTML += 'Latitude: ' + la + '<br>';
-			x.innerHTML += 'Longitude: ' + lo + '<br>';
-			x.innerHTML += 'Até: <br>' ;
-			x.innerHTML += 'Latitude: ' + (la+0.01) + '<br>';
-			x.innerHTML += 'Longitude: ' + (lo+0.01) + '<br>';
-			x.innerHTML += '<br>' ;
-			x.innerHTML += 'Distância: ' + distanceTwoPoints(la, lo, (la+0.01), lo+0.01) + '<br>';
+
+			places = [];
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "closePlaces.php",
+                data: {la: la, lo: lo},
+		        cache: false,
+	            success: function(data) {
+	                places = [];
+	                _.each( data, function(item, ix, list) {
+	                    places.push(item.name);
+	                    x.innerHTML += item.name + '<br>' + Math.round(distanceTwoPoints(la, lo, item.lat, item.lng),2) + ' metros <br>';
+	                });
+	            }
+	        });
+
 		}
 
-		function distanceTwoPoints(Choba, LoF, LaT, LoT) {
+		function distanceTwoPoints(LaF, LoF, LaT, LoT) {
 	        var earthRadius = 6372.795477598;
-	        var latFrom = Choba * Math.PI / 180;
+	        var latFrom = LaF * Math.PI / 180;
 	        var lonFrom = LoF * Math.PI / 180;
 	        var latTo = LaT * Math.PI / 180;
 	        var lonTo = LoT * Math.PI / 180;
