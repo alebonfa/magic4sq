@@ -28,3 +28,17 @@ div.city
 	clear: both;
 	margin-top: 20px;
 }
+
+div.closePlaceList
+{
+	padding:0px;
+	margin:0px;
+	background-color:#EDEDED;
+}
+
+div.closePlaceList a:hover
+{
+	background-color:#D6D6D6;
+	color: #6D6D6D;
+	border-bottom:3px solid #EA0000;
+}
