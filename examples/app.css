@@ -29,9 +29,28 @@ div.city
 	margin-top: 20px;
 }
 
+div.mapsRoute
+{
+	width: 340px;
+	height: 340px;
+	margin: 0px;
+	background-color:#ccc;
+	color:#05ff05;
+}
+
+div.distance
+{
+	width: 340px;
+	margin: 0px;
+	background-color:#000;
+	color:#fff;
+}
+
 div.closePlaceList
 {
-	padding:0px;
+	width: 340px;
+	padding-top:15px;
+	padding-bottom:15px;
 	margin:0px;
 	background-color:#EDEDED;
 }
