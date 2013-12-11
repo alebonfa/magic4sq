@@ -1,3 +1,13 @@
+@media all and (device-width: 320px){
+	body {
+	}
+}
+
+
+body {
+	width: 200px;
+}
+
 div.venue
 {   
 	float: left;
@@ -31,7 +41,6 @@ div.city
 
 div.mapsRoute
 {
-	width: 340px;
 	height: 340px;
 	margin: 0px;
 	background-color:#ccc;

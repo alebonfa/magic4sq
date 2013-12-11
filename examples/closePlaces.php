@@ -6,10 +6,10 @@
 
 	$La = $_POST["la"];
 	$Lo = $_POST["lo"];
-	$LaNW = $La -0.01;
-	$LoNW = $Lo -0.01;
-	$LaSE = $La +0.01;
-	$LoSE = $Lo +0.01;
+	$LaNW = $La -0.1;
+	$LoNW = $Lo -0.1;
+	$LaSE = $La +0.1;
+	$LoSE = $Lo +0.1;
 
 	$places = array();
 
